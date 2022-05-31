@@ -15,3 +15,5 @@ database:process.env.MYSQL_DB
       console.log('BD CONECTADO!');
 
  export { con }
+
+ //commitando
