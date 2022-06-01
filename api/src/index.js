@@ -1,15 +1,21 @@
 import 'dotenv/config'
-//import {con} from './repository/connection.js'
-import usuariocontroller from './controller/usuariocontroller.js'
+
+import usuariocontroller from './controller/usuariocontroller.js';
+import filmecontroller from './controller/filmecontroller.js'
+
 import express from 'express'
 import cors from 'cors'
-
 
 const server = express();
 server.use(cors());
 server.use(express.json());
 
-server.use(usuariocontroller);
+server.use('/storage/capasfilmes', express.static('storage/capasfilmes'))
 
-server.listen(process.env.PORT,
-             () => console.log(`API conectada na porta $process.env.PORT)`));
+server.use(usuariocontroller);
+server.use(filmecontroller);
+
+
+
+
+server.listen(process.env.PORT, () => console.log(`API tá on, chama no ${process.env.PORT} bb`));

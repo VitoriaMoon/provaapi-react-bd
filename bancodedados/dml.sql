@@ -1,4 +1,4 @@
-USE infoccatalogoFilmesDB;
+USE infoccatalogofilmes;
 
 
 
