@@ -21,3 +21,35 @@ export async function alterarImagem(imagem,id) {
     const [resposta] = await con.query(comando, [imagem, id]);
     return resposta.affectedRows;
 }
+export async function listarTodosFilmes(params) {
+    const comando = 
+    `
+    SELECT id_filme			      id,
+             nm_filme			      nome,
+           vl_avaliacao		    avaliacao,
+           dt_lancamento	    lancamento,
+           bt_disponivel	    disponivel
+    FROM   tb_filme `
+    
+    const [linhas] = await con.query(comando);
+    return linhas;
+}
+
+export async function buscarPorId(id) {
+    const comando = 
+    `
+    SELECT 
+       id_filme		         id,
+       nm_filme	           nome,
+       vl_avaliacao		     avaliacao,
+       ds_sinopse		       sinopse,
+       dt_lancamento	     lancamento,
+       bt_disponivel	     disponivel,
+       img_filme           capa
+  FROM tb_filme
+  WHERE id_filme			     = ?`
+    
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
+    
+  }

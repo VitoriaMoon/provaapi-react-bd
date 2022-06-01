@@ -2,7 +2,7 @@ import 'dotenv/config'
 
 import usuariocontroller from './controller/usuariocontroller.js';
 import filmecontroller from './controller/filmecontroller.js'
-
+import  listarTodosFilmes from './controller/filmerepository.js';
 import express from 'express'
 import cors from 'cors'
 
@@ -14,7 +14,7 @@ server.use('/storage/capasfilmes', express.static('storage/capasfilmes'))
 
 server.use(usuariocontroller);
 server.use(filmecontroller);
-
+server.use(filmerepository);
 
 
 

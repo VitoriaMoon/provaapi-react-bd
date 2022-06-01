@@ -47,12 +47,25 @@ server.put('/filme/:id/capa',upload.single('capa'), async (req, resp) =>{
         if (resposta != 1 ) {
             throw new Error ('Não possível inserir a imagem')
         }
-        resp.status(205).send();
+        resp.status(204).send();
     } catch (err) {
         resp.status(401).send({
             erro:err.message
         })
     }
 } )
+
+server.get('/filmes', async (req, resp) => {
+    try {
+        const resposta = await listarTodosFilmes();
+        resp.send(resposta);
+
+    } 
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
 
 export default server;
